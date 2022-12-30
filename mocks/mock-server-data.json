@@ -1,0 +1,75 @@
+{
+    "api": {
+        "titles":[
+            "Urban Apartment in Tbilisi",
+            "Leo palace",
+            "Apartment in Rustaveli Residence",
+            "Besik Street",
+            "Gold house"
+        ],
+        "descriptions":[
+            "10th Floor Apartment is located in Tbilisi, just 400 metres from Marjanishvili Metro Station. Tbilisi Opera and Ballet Theatre is 1.5 km away. ",
+            "Situated 1.5 km from Tbilisi Opera and Ballet Theatre, Leo palace offers 4-star accommodation in Tbilisi City and has a terrace.",
+            "Set in Tbilisi City, within 400 m of Freedom Square, простор offers accommodation with air conditioning",
+            "Boasting a garden, bar and views of garden, Holiday Inn Express Tbilisi Avlabari, an IHG Hotel is situated in Tbilisi City, 1.7 km from Freedom Square",
+            "Ideally located right in the centre of Tbilisi City, Terrace Mtatsminda offers mountain views and a shared lounge. "
+        ],
+        "citys":[
+            "Paris",
+            "Cologne",
+            "Brussels",
+            "Amsterdam",
+            "Hamburg",
+            "Dusseldorf"
+        ],
+        "previews":[
+            "previewImage1.png",
+            "previewImage2.png",
+            "previewImage3.png",
+            "previewImage4.png",
+            "previewImage5.png"
+    ],
+        "photos":[
+            "image1.png",
+            "image2.png",
+            "image3.png",
+            "image4.png",
+            "image5.png"
+        ],
+        "propertys":[
+            "apartment",
+            "house",
+            "room",
+            "hotel"
+        ],
+        "facilities":[
+            "Breakfast",
+            "Air conditioning",
+            "Laptop friendly workspace",
+            "Baby seat",
+            "Washer",
+            "Towels",
+            "Fridge"
+        ],
+        "users":[
+            "Иван Иванов",
+            "Олег Сидоров",
+            "Пьер Безухов",
+            "Роланд Дискейн",
+            "Холи Гибни",
+            "Джек Торренс",
+            "Антон Городецкий",
+            "Борис Гесер",
+            "Рокки Бальбоа",
+            "Джон Смит"
+        ],
+        "coordinates":[
+            "latitude: 48.85661, longitude: 2.351499",
+            "latitude: 50.938361, longitude: 6.959974",
+            "latitude: 50.846557, longitude: 4.351697",
+            "latitude: 52.370216, longitude: 4.895168",
+            "latitude: 53.550341, longitude: 10.000654",
+            "latitude: 51.225402, longitude: 6.776314"
+        ]
+    }
+}

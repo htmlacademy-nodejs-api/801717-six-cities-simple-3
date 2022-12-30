@@ -1,62 +1,34 @@
-import { readFileSync } from 'fs';
-import { PropertyType } from '../../types/property.enum.js';
-import { Offer } from '../../types/offer.type.js';
+import EventEmitter from 'events';
+import { createReadStream } from 'fs';
 import { FileReaderInterface } from './file-reader.interface.js';
 
-export default class TSVFileReader implements FileReaderInterface {
-  private rawData = '';
-
-  constructor(public filename: string) { }
-
-  public read(): void {
-    this.rawData = readFileSync(this.filename, { encoding: 'utf8' });
+export default class TSVFileReader extends EventEmitter implements FileReaderInterface {
+  constructor(public filename: string) {
+    super();
   }
 
-  public toArray(): Offer[] {
-    if (!this.rawData) {
-      return [];
+  public async read():Promise<void> {
+    const stream = createReadStream(this.filename, {
+      highWaterMark: 16384, // 16KB
+      encoding: 'utf-8',
+    });
+
+    let lineRead = '';
+    let endLinePosition = -1;
+    let importedRowCount = 0;
+
+    for await (const chunk of stream) {
+      lineRead += chunk.toString();
+
+      while ((endLinePosition = lineRead.indexOf('\n')) >= 0) {
+        const completeRow = lineRead.slice(0, endLinePosition + 1);
+        lineRead = lineRead.slice(++endLinePosition);
+        importedRowCount++;
+
+        this.emit('line', completeRow);
+      }
     }
 
-    console.log('this.rawData', this.rawData);
-
-    return this.rawData
-      .split('\n')
-      .filter((row) => row.trim() !== '')
-      .map((line) => line.split('\t'))
-      .map(([
-        title,
-        description,
-        postDate,
-        city,
-        preview,
-        photos,
-        isPremium,
-        rating,
-        property,
-        rooms,
-        guests,
-        price,
-        facilities,
-        user,
-        commentsCount,
-        coordinates,
-      ]) => ({
-        title,
-        description,
-        postDate: new Date(postDate),
-        city,
-        preview,
-        photos: photos.split(';'),
-        isPremium: Boolean(isPremium),
-        rating: Number.parseInt(rating, 10),
-        property: PropertyType[property as 'apartment' | 'house' | 'room' | 'hotel'],
-        rooms: Number.parseInt(rooms, 10),
-        guests: Number.parseInt(guests, 10),
-        price: Number.parseInt(price, 10),
-        facilities: facilities.split(';'),
-        user,
-        commentsCount: Number.parseInt(commentsCount, 10),
-        coordinates,
-      }));
+    this.emit('end', importedRowCount);
   }
 }
