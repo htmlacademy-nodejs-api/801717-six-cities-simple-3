@@ -14,6 +14,7 @@ class helpCommand implements CliCommandInterface {
         ${ chalk.blue('--version:                   # выводит номер версии') }
         ${ chalk.blue.bgRed.bold('--help:                      # печатает этот текст')}
         ${ chalk.green.underline.bold('--import <path>:             # импортирует данные из TSV')}
+        --generate <n> <path> <url>  # генерирует произвольное количество тестовых данных
         `);
   }
 }
