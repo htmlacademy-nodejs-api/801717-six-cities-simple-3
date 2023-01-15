@@ -1,3 +1,4 @@
+import crypto from 'crypto';
 import { PropertyType } from '../types/property.enum.js';
 import { Offer } from '../types/offer.type.js';
 
@@ -16,7 +17,7 @@ export const createOffer = (row: string) => {
     guests,
     price,
     facilities,
-    user,
+    userName,
     commentsCount,
     coordinates] = tokens;
   return {
@@ -33,7 +34,9 @@ export const createOffer = (row: string) => {
     guests: Number.parseInt(guests, 10),
     price: Number.parseInt(price, 10),
     facilities: facilities.split(';'),
-    user,
+    user: {
+      name: userName,
+    },
     commentsCount: Number.parseInt(commentsCount, 10),
     coordinates,
   } as Offer;
@@ -41,3 +44,8 @@ export const createOffer = (row: string) => {
 
 export const getErrorMessage = (error: unknown): string =>
   error instanceof Error ? error.message : '';
+
+export const createSHA256 = (line: string, salt: string): string => {
+  const shaHasher = crypto.createHmac('sha256', salt);
+  return shaHasher.update(line).digest('hex');
+};

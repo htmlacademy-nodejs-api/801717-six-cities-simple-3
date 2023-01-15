@@ -1,4 +1,6 @@
 import { PropertyType } from './property.enum.js';
+import {User} from './user.type.js';
+import {Facilities} from './facilities.enum.js';
 
 export type Offer = {
     title: string;
@@ -13,8 +15,8 @@ export type Offer = {
     rooms: number;
     guests: number;
     price: number;
-    facilities: string[];
-    user: string;
+    facilities: Facilities[];
+    user: User;
     commentsCount: number;
     coordinates: string;
   }
