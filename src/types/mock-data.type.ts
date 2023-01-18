@@ -6,6 +6,6 @@ export type MockData = {
     photos: string[],
     propertys: string[],
     facilities: string[],
-    users: string[],
+    userName: string[],
     coordinates: string[],
 };

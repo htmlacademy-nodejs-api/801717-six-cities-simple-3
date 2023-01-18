@@ -16,7 +16,9 @@
     "compile": "tsc -p tsconfig.json",
     "clean": "rimraf dist",
     "ts": "ts-node",
-    "mock:server": "json-server ./mocks/mock-server-data.json --port 3123"
+    "mock:server": "json-server ./mocks/mock-server-data.json --port 3123",
+    "cli:import": "npm run ts ./src/cli.ts -- --import ./mocks/mock-data.tsv admin test 127.0.0.1 course-nodejs-restapi qwerty"
+
   },
   "devDependencies": {
     "@types/convict": "^6.1.1",

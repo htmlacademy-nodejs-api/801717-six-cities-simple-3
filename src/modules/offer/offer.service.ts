@@ -10,7 +10,7 @@ import {Component} from '../../types/component.types.js';
 export default class OfferService implements OfferServiceInterface {
   constructor(
         @inject(Component.LoggerInterface) private logger: LoggerInterface,
-        @inject(Component.UserModel) private readonly offerModel: types.ModelType<OfferEntity>
+        @inject(Component.OfferModel) private readonly offerModel: types.ModelType<OfferEntity>
   ) {}
 
   public async create(dto: CreateOfferDto): Promise<DocumentType<OfferEntity>> {

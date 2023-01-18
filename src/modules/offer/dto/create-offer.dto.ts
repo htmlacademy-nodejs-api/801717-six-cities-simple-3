@@ -1,4 +1,3 @@
-import {User} from '../../../types/user.type.js';
 import {Facilities} from '../../../types/facilities.enum.js';
 import {PropertyType} from '../../../types/property.enum.js';
 
@@ -16,7 +15,7 @@ export default class CreateUserDto {
   public guests!: number;
   public price!: number;
   public facilities!: Facilities[];
-  public user!: User;
+  public userId!: string;
   public commentsCount!: number;
   public coordinates!: string;
 }

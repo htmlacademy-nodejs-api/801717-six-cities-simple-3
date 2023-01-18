@@ -5,7 +5,6 @@ import {ConfigInterface} from '../common/config/config.interface.js';
 import {Component} from '../types/component.types.js';
 import {getURI} from '../utils/db.js';
 import {DatabaseInterface} from '../common/database-client/database.interface.js';
-import { UserModel } from '../modules/user/user.model.js';
 
 @injectable()
 export default class Application {
@@ -29,14 +28,5 @@ export default class Application {
     );
 
     await this.databaseClient.connect(uri);
-
-    const user = new UserModel({
-      email: 'test@emailru',
-      avatarPath: 'keks.jpg',
-      name: '2',
-    });
-
-    const error = user.validateSync();
-    console.log(error);
   }
 }

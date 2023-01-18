@@ -1,6 +1,8 @@
 import crypto from 'crypto';
 import { PropertyType } from '../types/property.enum.js';
 import { Offer } from '../types/offer.type.js';
+import { UserType } from '../types/user-type.enum.js';
+import { User } from '../types/user.type.js';
 
 export const createOffer = (row: string) => {
   const tokens = row.replace('\n', '').split('\t');
@@ -18,6 +20,9 @@ export const createOffer = (row: string) => {
     price,
     facilities,
     userName,
+    email,
+    avatarPath,
+    userType,
     commentsCount,
     coordinates] = tokens;
   return {
@@ -36,7 +41,10 @@ export const createOffer = (row: string) => {
     facilities: facilities.split(';'),
     user: {
       name: userName,
-    },
+      email,
+      avatarPath,
+      type: UserType[userType as 'Pro' | 'Common'],
+    } as User,
     commentsCount: Number.parseInt(commentsCount, 10),
     coordinates,
   } as Offer;
