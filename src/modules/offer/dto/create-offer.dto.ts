@@ -1,7 +1,7 @@
 import {Facilities} from '../../../types/facilities.enum.js';
 import {PropertyType} from '../../../types/property.enum.js';
 
-export default class CreateUserDto {
+export default class CreateOfferDto {
   public title!: string;
   public description!: string;
   public postDate!: Date;
