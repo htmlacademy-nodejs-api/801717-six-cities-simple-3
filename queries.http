@@ -2,3 +2,39 @@
 GET http://localhost:3123/api HTTP/1.1
 
 ###
+
+# Предложения
+## Получить список предложений
+
+GET http://localhost:5000/offers HTTP/1.1
+Content-Type: application/json
+
+###
+
+# Пользователи
+## Регистрация пользователя
+
+POST http://localhost:5000/users/register HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "torans@overlook.net",
+  "avatarPath": "torrance.png",
+  "firstname": "Jack",
+  "lastname": "Torrance",
+  "password": "shining"
+}
+
+###
+
+## Авторизация пользователя
+
+POST http://localhost:5000/users/login HTTP/1.1
+Content-Type: application/json
+
+{
+  "email": "torans@overlook.net",
+  "password": "123456"
+}
+
+###
