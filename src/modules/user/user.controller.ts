@@ -21,7 +21,7 @@ export default class UserController extends Controller {
     @inject(Component.ConfigInterface) private readonly configService: ConfigInterface,
   ) {
     super(logger);
-    this.logger.info('Register routes for UserController…');
+    this.logger.info('Register routes for UserController...');
 
     this.addRoute({path: '/register', method: HttpMethod.Post, handler: this.create});
     this.addRoute({path: '/login', method: HttpMethod.Post, handler: this.login});

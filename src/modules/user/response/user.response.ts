@@ -8,10 +8,7 @@ export default class UserResponse {
   public avatarPath!: string;
 
   @Expose()
-  public firstname!: string;
-
-  @Expose()
-  public lastname!: string;
+  public name!: string;
 
   @Expose()
   public type!: string;

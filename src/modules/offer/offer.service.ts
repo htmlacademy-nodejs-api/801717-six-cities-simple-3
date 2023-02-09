@@ -7,6 +7,8 @@ import UpdateOfferDto from './dto/update-offer.dto.js';
 import {LoggerInterface} from '../../common/logger/logger.interface.js';
 import {Component} from '../../types/component.types.js';
 
+const DEFAULT_OFFER_COUNT = 60;
+
 @injectable()
 export default class OfferService implements OfferServiceInterface {
   constructor(
@@ -25,8 +27,9 @@ export default class OfferService implements OfferServiceInterface {
     return this.offerModel.findByIdAndUpdate(offerId, dto, {new: true}).exec();
   }
 
-  public async find(): Promise<DocumentType<OfferEntity>[]> {
-    return this.offerModel.find().populate('userId').exec();
+  public async find(count?: number): Promise<DocumentType<OfferEntity>[]> {
+    const limit = count ?? DEFAULT_OFFER_COUNT;
+    return this.offerModel.find().populate('userId').limit(limit).exec();
   }
 
   public async findById(offerId: string): Promise<DocumentType<OfferEntity> | null> {

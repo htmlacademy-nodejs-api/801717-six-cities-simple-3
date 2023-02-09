@@ -1,4 +1,5 @@
-import {Expose} from 'class-transformer';
+import {Expose, Type} from 'class-transformer';
+import UserResponse from '../../user/response/user.response.js';
 
 export default class OfferResponse {
   @Expose()
@@ -27,4 +28,8 @@ export default class OfferResponse {
 
   @Expose()
   public commentsCount!: string;
+
+  @Expose({ name: 'userId'})
+  @Type(() => UserResponse)
+  public user!: UserResponse;
 }
