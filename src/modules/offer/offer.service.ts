@@ -23,10 +23,6 @@ export default class OfferService implements OfferServiceInterface {
     return result;
   }
 
-  public async updateById(offerId: string, dto: UpdateOfferDto): Promise<DocumentType<OfferEntity> | null> {
-    return this.offerModel.findByIdAndUpdate(offerId, dto, {new: true}).exec();
-  }
-
   public async find(count?: number): Promise<DocumentType<OfferEntity>[]> {
     const limit = count ?? DEFAULT_OFFER_COUNT;
     return this.offerModel.find().populate('userId').limit(limit).exec();
@@ -38,6 +34,10 @@ export default class OfferService implements OfferServiceInterface {
 
   public async deleteById(offerId: string): Promise<DocumentType<OfferEntity> | null> {
     return this.offerModel.findByIdAndDelete(offerId).exec();
+  }
+
+  public async updateById(offerId: string, dto: UpdateOfferDto): Promise<DocumentType<OfferEntity> | null> {
+    return this.offerModel.findByIdAndUpdate(offerId, dto, {new: true}).exec();
   }
 
   public async incCommentCount(offerId: string): Promise<DocumentType<OfferEntity> | null> {

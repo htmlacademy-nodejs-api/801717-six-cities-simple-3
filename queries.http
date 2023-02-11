@@ -66,13 +66,13 @@ Content-Type: application/json
     "preview": "previewImage1.png",
     "photos": "image1.png",
     "property": "apartment",
-    "facilities": "Breakfast",
+    "facilities": ["Breakfast"],
     "userId": "63c850da7df4eed53a0330c7",
     "coordinates": "latitude: 48.85661, longitude: 2.351499",
-    "rooms": "2",
-    "guests": "3",
-    "price": "200",
-    "isPremium": "true",
+    "rooms": 20,
+    "guests": 30,
+    "price": 200,
+    "isPremium": true,
     "rating": "0",
     "postDate": "2022-05-12T11:56:37.573Z"
 }

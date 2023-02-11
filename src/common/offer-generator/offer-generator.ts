@@ -2,6 +2,7 @@ import dayjs from 'dayjs';
 
 import { MockData } from '../../types/mock-data.type.js';
 import { PropertyType } from '../../types/property.enum.js';
+import { CityType } from '../../types/city.enum.js';
 import { generateRandomValue, getRandomItem, getRandomItems, generateRandomFlag } from '../../utils/random.js';
 import { OfferGeneratorInterface } from './offer-generator.interface.js';
 import {
@@ -19,7 +20,14 @@ export default class OfferGenerator implements OfferGeneratorInterface {
     const title = getRandomItem<string>(this.mockData.titles);
     const description = getRandomItem<string>(this.mockData.descriptions);
     const postDate = dayjs().subtract(generateRandomValue(WeekDayLimits.FIRST_WEEK_DAY, WeekDayLimits.LAST_WEEK_DAY), 'day').toISOString();
-    const city = getRandomItem<string>(this.mockData.citys);
+    const city = getRandomItem<string>([
+      CityType.Paris,
+      CityType.Cologne,
+      CityType.Brussels,
+      CityType.Amsterdam,
+      CityType.Hamburg,
+      CityType.Dusseldorf,
+    ]);
     const preview = getRandomItem<string>(this.mockData.previews);
     const photo = getRandomItems<string>(this.mockData.photos).join(';');
     const isPremium = generateRandomFlag();
