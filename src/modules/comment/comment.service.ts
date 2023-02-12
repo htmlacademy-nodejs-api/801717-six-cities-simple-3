@@ -5,6 +5,7 @@ import {LoggerInterface} from '../../common/logger/logger.interface.js';
 import {Component} from '../../types/component.types.js';
 import {CommentEntity} from './comment.entity.js';
 import CreateCommentDto from './dto/create-comment.dto.js';
+import mongoose from 'mongoose';
 
 @injectable()
 export default class CommentService implements CommentServiceInterface {
@@ -16,14 +17,6 @@ export default class CommentService implements CommentServiceInterface {
   public async create(dto: CreateCommentDto): Promise<DocumentType<CommentEntity>> {
     const comment = await this.commentModel.create(dto);
 
-    const rating = await this.commentModel.aggregate([
-      { $match: { offerId: dto.offerId } },
-      { $group : {_id: '$avdRating', avgAmount: {$avg: '$ratirng'}}},
-      { $merge: { into: 'offers', on: 'rating', whenMatched: 'replace', whenNotMatched: 'insert' } }
-    ]);
-
-    this.logger.info(`rating: ${rating}`);
-
     return comment.populate('userId');
   }
 
@@ -31,6 +24,19 @@ export default class CommentService implements CommentServiceInterface {
     return this.commentModel
       .find({offerId})
       .populate('userId');
+  }
+
+  public async recalculateRating(offerId: string): Promise<number | null> {
+    const rating = await this.commentModel.aggregate([
+      { $match: { offerId: new mongoose.Types.ObjectId(offerId) } },
+      { $group : { _id: 'avdRating', avgAmount: { $avg: '$rating' } } },
+    ]);
+
+    const newRating = Number(rating.map((item) => item.avgAmount)[0].toFixed(1));
+
+    this.logger.info(`newRating: ${newRating}`);
+
+    return newRating;
   }
 
   public async deleteByOfferId(offerId: string): Promise<number> {

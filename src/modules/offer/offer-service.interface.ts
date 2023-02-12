@@ -12,5 +12,6 @@ export interface OfferServiceInterface extends DocumentExistsInterface {
   find(count?: number): Promise<DocumentType<OfferEntity>[]>;
   findById(offerId: string): Promise<DocumentType<OfferEntity> | null>;
   incCommentCount(offerId: string): Promise<DocumentType<OfferEntity> | null>;
+  updateRating(offerId: string, newRating: number | null): Promise<DocumentType<OfferEntity> | null>;
   exists(documentId: string): Promise<boolean>;
 }
