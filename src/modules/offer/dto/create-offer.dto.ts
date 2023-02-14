@@ -1,7 +1,28 @@
 import {Facilities} from '../../../types/facilities.enum.js';
 import {PropertyType} from '../../../types/property.enum.js';
 import {CityType} from '../../../types/city.enum.js';
-import {IsArray, IsBoolean, IsDateString, IsEnum, IsInt, Max, MaxLength, Min, MinLength, IsString} from 'class-validator';
+import { Type } from 'class-transformer';
+import {IsArray,
+  IsBoolean,
+  IsDateString,
+  IsEnum,
+  IsInt,
+  Max,
+  MaxLength,
+  Min,
+  MinLength,
+  IsString,
+  ValidateNested,
+  IsNumber
+} from 'class-validator';
+
+class Coordinates {
+  @IsNumber({}, {message: 'latitude must be number'})
+  public latitude!: number;
+
+  @IsNumber({}, {message: 'longitude must be number'})
+  public longitude!: number;
+}
 
 export default class CreateOfferDto {
   @MinLength(10, {message: 'Minimum title length must be 10'})
@@ -15,7 +36,7 @@ export default class CreateOfferDto {
   @IsDateString({}, {message: 'postDate must be valid ISO date'})
   public postDate!: Date;
 
-  @IsEnum(PropertyType, {message: 'Type must be Paris Cologne, Brussels, Amsterdam, Hamburg or Dusseldorf'})
+  @IsEnum(CityType, {message: 'Type must be Paris Cologne, Brussels, Amsterdam, Hamburg or Dusseldorf'})
   public city!: CityType;
 
   @IsString({message: 'Preview is required'})
@@ -47,9 +68,12 @@ export default class CreateOfferDto {
   public price!: number;
 
   @IsArray({message: 'Field facilities must be an array'})
+  @IsEnum(Facilities, {each: true})
   public facilities!: Facilities[];
 
   public userId!: string;
 
-  public coordinates!: string;
+  @ValidateNested()
+  @Type(() => Coordinates)
+  public coordinates!: Coordinates;
 }

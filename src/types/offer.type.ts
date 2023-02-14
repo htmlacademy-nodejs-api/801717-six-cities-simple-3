@@ -1,7 +1,8 @@
 import { PropertyType } from './property.enum.js';
 import { CityType } from './city.enum.js';
-import {User} from './user.type.js';
-import {Facilities} from './facilities.enum.js';
+import { User } from './user.type.js';
+import { Coordinates } from './coordinates.type.js';
+import { Facilities } from './facilities.enum.js';
 
 export type Offer = {
     title: string;
@@ -19,5 +20,5 @@ export type Offer = {
     facilities: Facilities[];
     user: User;
     commentsCount: number;
-    coordinates: string;
+    coordinates: Coordinates;
   }

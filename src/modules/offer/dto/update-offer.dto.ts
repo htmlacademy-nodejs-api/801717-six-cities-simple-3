@@ -1,5 +1,6 @@
 import {Facilities} from '../../../types/facilities.enum.js';
 import {PropertyType} from '../../../types/property.enum.js';
+import { Type } from 'class-transformer';
 import {
   IsDateString,
   IsArray,
@@ -11,8 +12,20 @@ import {
   Max,
   MaxLength,
   Min,
-  MinLength
+  MinLength,
+  ValidateNested,
+  IsNumber
 } from 'class-validator';
+
+class Coordinates {
+  @IsOptional()
+  @IsNumber({}, {message: 'latitude must be number'})
+  public latitude!: number;
+
+  @IsOptional()
+  @IsNumber({}, {message: 'longitude must be number'})
+  public longitude!: number;
+}
 
 export default class UpdateOfferDto {
   @IsOptional()
@@ -72,5 +85,8 @@ export default class UpdateOfferDto {
   @IsArray({message: 'Field facilities must be an array'})
   public facilities?: Facilities[];
 
-  public coordinates?: string;
+  @IsOptional()
+  @ValidateNested()
+  @Type(() => Coordinates)
+  public coordinates?: Coordinates;
 }

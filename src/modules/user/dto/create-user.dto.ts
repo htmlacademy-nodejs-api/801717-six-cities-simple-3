@@ -2,6 +2,7 @@ import { UserType } from '../../../types/user-type.enum.js';
 import {IsEmail, IsString, Length, IsEnum} from 'class-validator';
 
 export default class CreateUserDto {
+  @IsString({message: 'Name is required'})
   @IsEmail({}, {message: 'Email must be valid address'})
   public email!: string ;
 

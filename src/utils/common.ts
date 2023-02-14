@@ -6,6 +6,7 @@ import { Offer } from '../types/offer.type.js';
 import { PropertyType } from '../types/property.enum.js';
 import { UserType } from '../types/user-type.enum.js';
 import { User } from '../types/user.type.js';
+import { Coordinates } from '../types/coordinates.type.js';
 
 export const createOffer = (row: string) => {
   const tokens = row.replace('\n', '').split('\t');
@@ -27,7 +28,9 @@ export const createOffer = (row: string) => {
     avatarPath,
     userType,
     commentsCount,
-    coordinates] = tokens;
+    latitude,
+    longitude] = tokens;
+
   return {
     title,
     description,
@@ -49,7 +52,10 @@ export const createOffer = (row: string) => {
       type: UserType[userType as 'Pro' | 'Common'],
     } as User,
     commentsCount: Number.parseInt(commentsCount, 10),
-    coordinates,
+    coordinates: {
+      latitude:  Number.parseFloat(latitude),
+      longitude: Number.parseFloat(longitude)
+    } as Coordinates,
   } as Offer;
 };
 

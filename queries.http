@@ -33,7 +33,7 @@ POST http://localhost:5000/users/login HTTP/1.1
 Content-Type: application/json
 
 {
-  "email": "test1@test.ru",
+  "email": "test2@test.ru",
   "password": "123456"
 }
 
@@ -57,6 +57,7 @@ GET http://localhost:5000/offers HTTP/1.1
 ## Создание объявления
 
 POST http://localhost:5000/offers HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3QyQHRlc3QucnUiLCJpZCI6IjYzZGZhNDU4MzI5ODExMjA2YTZhMWU5NCIsImlhdCI6MTY3NjQwNDgzNiwiZXhwIjoxNjc2NTc3NjM2fQ.bamCQHFyiTyFpGuPRtMSD-n3HjRvxVcQzO3fehPoDVc
 Content-Type: application/json
 
 {
@@ -64,16 +65,14 @@ Content-Type: application/json
     "description": "10th Floor Apartment is located in Tbilisi, just 400 metres from Marjanishvili Metro Station. Tbilisi Opera and Ballet Theatre is 1.5 km away. ",
     "city": "Paris",
     "preview": "previewImage1.png",
-    "photos": "image1.png",
+    "photos": ["image1.png"],
     "property": "apartment",
     "facilities": ["Breakfast"],
-    "userId": "63c850da7df4eed53a0330c7",
-    "coordinates": "latitude: 48.85661, longitude: 2.351499",
-    "rooms": 20,
-    "guests": 30,
+    "coordinates": {"latitude": 48.85661, "longitude": 2.351499},
+    "rooms": 8,
+    "guests": 8,
     "price": 200,
     "isPremium": true,
-    "rating": "0",
     "postDate": "2022-05-12T11:56:37.573Z"
 }
 
@@ -81,18 +80,20 @@ Content-Type: application/json
 
 ## Удаление объявления
 
-DELETE http://localhost:5000/offers/63e499077ff0e18973123075 HTTP/1.1
+DELETE http://localhost:5000/offers/63ebe8821f47145e6c920a16 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3QxQHRlc3QucnUiLCJpZCI6IjYzYzg1MGRhN2RmNGVlZDUzYTAzMzBjNyIsImlhdCI6MTY3NjQwMzgxOCwiZXhwIjoxNjc2NTc2NjE4fQ.x3iYrsiWmWg_wJSl2hriF4ly5E8AqXcSe678W7znlFY
 
 ###
 
 ## Обновление объявления
 
-PATCH http://localhost:5000/offers/63e499e07ff0e1897312307c HTTP/1.1
+PATCH http://localhost:5000/offers/63ebe8821f47145e6c920a16 HTTP/1.1
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3QyQHRlc3QucnUiLCJpZCI6IjYzZGZhNDU4MzI5ODExMjA2YTZhMWU5NCIsImlhdCI6MTY3NjQwNDgzNiwiZXhwIjoxNjc2NTc3NjM2fQ.bamCQHFyiTyFpGuPRtMSD-n3HjRvxVcQzO3fehPoDVc
 Content-Type: application/json
 
 {
   "title": "Ночной дозор 3",
-  "description": "Проверка обновления",
+  "description": "Проверка обновления!",
   "price": 1100
 }
 
