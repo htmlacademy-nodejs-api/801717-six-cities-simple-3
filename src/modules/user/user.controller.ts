@@ -109,6 +109,6 @@ export default class UserController extends Controller {
   public async checkAuthenticate(req: Request, res: Response) {
     const user = await this.userService.findByEmail(req.user.email);
 
-    this.ok(res, fillDTO(LoggedUserResponse, user));
+    this.ok(res, fillDTO(UserResponse, user));
   }
 }

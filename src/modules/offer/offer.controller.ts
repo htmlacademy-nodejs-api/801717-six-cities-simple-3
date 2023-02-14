@@ -7,6 +7,7 @@ import {LoggerInterface} from '../../common/logger/logger.interface.js';
 import {HttpMethod} from '../../types/http-method.enum.js';
 import {OfferServiceInterface} from './offer-service.interface.js';
 import OfferResponse from './response/offer.response.js';
+import OfferListResponse from './response/offer-list.response.js';
 import {fillDTO} from '../../utils/common.js';
 import CreateOfferDto from './dto/create-offer.dto.js';
 import UpdateOfferDto from './dto/update-offer.dto.js';
@@ -92,7 +93,7 @@ export default class OfferController extends Controller {
     res: Response
   ): Promise<void> {
     const offers = await this.offerService.find(query.limit);
-    const offerResponse = fillDTO(OfferResponse, offers);
+    const offerResponse = fillDTO(OfferListResponse, offers);
     this.ok(res, offerResponse);
   }
 

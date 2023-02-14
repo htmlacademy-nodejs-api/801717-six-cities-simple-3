@@ -1,11 +1,13 @@
 import {inject, injectable} from 'inversify';
 import {DocumentType, types} from '@typegoose/typegoose';
+import mongoose from 'mongoose';
+import CreateCommentDto from './dto/create-comment.dto.js';
+import { SortType } from '../../types/sort-type.enum.js';
+import { MAX_COMMENT_COUNT } from './comment.constant.js';
 import {CommentServiceInterface} from './comment-service.interface.js';
 import {LoggerInterface} from '../../common/logger/logger.interface.js';
 import {Component} from '../../types/component.types.js';
 import {CommentEntity} from './comment.entity.js';
-import CreateCommentDto from './dto/create-comment.dto.js';
-import mongoose from 'mongoose';
 
 @injectable()
 export default class CommentService implements CommentServiceInterface {
@@ -22,8 +24,7 @@ export default class CommentService implements CommentServiceInterface {
 
   public async findByOfferId(offerId: string): Promise<DocumentType<CommentEntity>[]> {
     return this.commentModel
-      .find({offerId})
-      .populate('userId');
+      .find({offerId}).sort({createdAt: SortType.Down}).limit(MAX_COMMENT_COUNT).populate('userId');
   }
 
   public async recalculateRating(offerId: string): Promise<number | null> {

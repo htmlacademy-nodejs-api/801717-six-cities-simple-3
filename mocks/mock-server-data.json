@@ -63,13 +63,31 @@
             "Рокки Бальбоа",
             "Джон Смит"
         ],
+        "email": [
+            "1email1@email.com",
+            "2email2@email.com",
+            "3email3@email.com",
+            "4email4@email.com",
+            "5email5@email.com"
+        ],
+        "avatarPath": [
+            "1avatar1.png",
+            "2avatar2.png",
+            "3avatar3.png",
+            "4avatar4.png",
+            "5avatar5.png"
+        ],
+        "type": [
+            "Common",
+            "Pro"
+        ],
         "coordinates":[
-            "latitude: 48.85661, longitude: 2.351499",
-            "latitude: 50.938361, longitude: 6.959974",
-            "latitude: 50.846557, longitude: 4.351697",
-            "latitude: 52.370216, longitude: 4.895168",
-            "latitude: 53.550341, longitude: 10.000654",
-            "latitude: 51.225402, longitude: 6.776314"
+            {"latitude": 48.85661, "longitude": 2.351499},
+            {"latitude": 50.938361, "longitude": 6.959974},
+            {"latitude": 50.846557, "longitude": 4.351697},
+            {"latitude": 52.370216, "longitude": 4.895168},
+            {"latitude": 53.550341, "longitude": 10.000654},
+            {"latitude": 51.225402, "longitude": 6.776314}
         ]
     }
 }

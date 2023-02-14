@@ -1,6 +1,7 @@
+import { Type } from 'class-transformer';
 import {Facilities} from '../../../types/facilities.enum.js';
 import {PropertyType} from '../../../types/property.enum.js';
-import { Type } from 'class-transformer';
+import { CityType } from '../../../types/city.enum.js';
 import {
   IsDateString,
   IsArray,
@@ -43,8 +44,8 @@ export default class UpdateOfferDto {
   public postDate?: Date;
 
   @IsOptional()
-  @IsEnum(PropertyType, {message: 'Type must be Paris Cologne, Brussels, Amsterdam, Hamburg or Dusseldorf'})
-  public city?: string;
+  @IsEnum(CityType, {message: `City must be ${Object.values(CityType).join(', ')}.`})
+  public city?: CityType;
 
   @IsOptional()
   @IsString({message: 'Preview is required'})
@@ -60,7 +61,7 @@ export default class UpdateOfferDto {
   public isPremium!: boolean;
 
   @IsOptional()
-  @IsEnum(PropertyType, {message: 'Type must be apartment, house, room or hotel'})
+  @IsEnum(PropertyType, {message: `Type must be ${Object.values(PropertyType).join(', ')}.`})
   public property?: PropertyType;
 
   @IsOptional()

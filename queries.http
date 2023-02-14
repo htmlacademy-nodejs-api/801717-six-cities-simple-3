@@ -42,7 +42,7 @@ Content-Type: application/json
 # Объявления
 ## Объявление по идентификатору
 
-GET http://localhost:5000/offers/63dfa48f31a6617062cb298a HTTP/1.1
+GET http://localhost:5000/offers/63ebe8821f47145e6c920a16 HTTP/1.1
 
 ###
 
@@ -57,7 +57,7 @@ GET http://localhost:5000/offers HTTP/1.1
 ## Создание объявления
 
 POST http://localhost:5000/offers HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3QyQHRlc3QucnUiLCJpZCI6IjYzZGZhNDU4MzI5ODExMjA2YTZhMWU5NCIsImlhdCI6MTY3NjQwNDgzNiwiZXhwIjoxNjc2NTc3NjM2fQ.bamCQHFyiTyFpGuPRtMSD-n3HjRvxVcQzO3fehPoDVc
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3QyQHRlc3QucnUiLCJpZCI6IjYzZGZhNDU4MzI5ODExMjA2YTZhMWU5NCIsImlhdCI6MTY3NjM5ODk2NSwiZXhwIjoxNjc2NTcxNzY1fQ.vxrp3uli1NdXO3XkOvdquzSIUaFbaRO2TShffDAYllo
 Content-Type: application/json
 
 {
@@ -101,7 +101,7 @@ Content-Type: application/json
 
 ## Создать комментарий
 POST http://localhost:5000/comments HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3QxQHRlc3QucnUiLCJpZCI6IjYzYzg1MGRhN2RmNGVlZDUzYTAzMzBjNyIsImlhdCI6MTY3NjIwNTUwNiwiZXhwIjoxNjc2Mzc4MzA2fQ.3PtQ56BNei-v2n4pqgc3MWbKUzB19SV5aaJ8rp-T2yk
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3QyQHRlc3QucnUiLCJpZCI6IjYzZGZhNDU4MzI5ODExMjA2YTZhMWU5NCIsImlhdCI6MTY3NjM5ODk2NSwiZXhwIjoxNjc2NTcxNzY1fQ.vxrp3uli1NdXO3XkOvdquzSIUaFbaRO2TShffDAYllo
 Content-Type: application/json
 
 {
@@ -120,6 +120,6 @@ GET http://localhost:5000/offers/63dfa48f31a6617062cb298a/comments HTTP/1.1
 
 ## Проверка токена пользователя
 GET http://localhost:5000/users/login HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3QxQHRlc3QucnUiLCJpZCI6IjYzYzg1MGRhN2RmNGVlZDUzYTAzMzBjNyIsImlhdCI6MTY3NjIwNTUwNiwiZXhwIjoxNjc2Mzc4MzA2fQ.3PtQ56BNei-v2n4pqgc3MWbKUzB19SV5aaJ8rp-T2yk
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3QyQHRlc3QucnUiLCJpZCI6IjYzZGZhNDU4MzI5ODExMjA2YTZhMWU5NCIsImlhdCI6MTY3NjM5ODk2NSwiZXhwIjoxNjc2NTcxNzY1fQ.vxrp3uli1NdXO3XkOvdquzSIUaFbaRO2TShffDAYllo
 
 ###

@@ -7,10 +7,8 @@ import { generateRandomValue, getRandomItem, getRandomItems, generateRandomFlag 
 import { OfferGeneratorInterface } from './offer-generator.interface.js';
 import {
   PriceLimits,
-  RatingLimits,
   RoomsLimits,
   GuestsLimits,
-  CommentsLimits,
   WeekDayLimits,
 } from './offer-generator.constants.js';
 export default class OfferGenerator implements OfferGeneratorInterface {
@@ -29,17 +27,21 @@ export default class OfferGenerator implements OfferGeneratorInterface {
       CityType.Dusseldorf,
     ]);
     const preview = getRandomItem<string>(this.mockData.previews);
-    const photo = getRandomItems<string>(this.mockData.photos).join(';');
+    const photos = getRandomItems<string>(this.mockData.photos).join(';');
     const isPremium = generateRandomFlag();
-    const rating = generateRandomValue(RatingLimits.MIN_RATING, RatingLimits.MAX_RATING).toString();
+    const rating = '0';
     const property = getRandomItem([PropertyType.apartment, PropertyType.house, PropertyType.room, PropertyType.hotel]);
     const rooms = generateRandomValue(RoomsLimits.MIN_ROOMS, RoomsLimits.MAX_ROOMS).toString();
     const guests = generateRandomValue(GuestsLimits.MIN_GUESTS, GuestsLimits.MAX_GUESTS).toString();
     const price = generateRandomValue(PriceLimits.MIN_PRICE, PriceLimits.MAX_PRICE).toString();
     const facilities = getRandomItems<string>(this.mockData.facilities).join(';');
-    const user = getRandomItem<string>(this.mockData.userName);
-    const commentsCount = generateRandomValue(CommentsLimits.MIN_COMMENTS, CommentsLimits.MAX_COMMENTS).toString();
-    const coordinates = getRandomItem<string>(this.mockData.coordinates);
+    const userName = getRandomItem<string>(this.mockData.userName);
+    const email = getRandomItem<string>(this.mockData.email);
+    const avatarPath = getRandomItem<string>(this.mockData.avatarPath);
+    const type = getRandomItem<string>(this.mockData.type);
+    const commentsCount = '0';
+    const latitude = this.mockData.coordinates[generateRandomValue(0, 5, 0)].latitude.toString();
+    const longitude = this.mockData.coordinates[generateRandomValue(0, 5, 0)].longitude.toString();
 
     return [
       title,
@@ -47,7 +49,7 @@ export default class OfferGenerator implements OfferGeneratorInterface {
       postDate,
       city,
       preview,
-      photo,
+      photos,
       isPremium,
       rating,
       property,
@@ -55,9 +57,13 @@ export default class OfferGenerator implements OfferGeneratorInterface {
       guests,
       price,
       facilities,
-      user,
+      userName,
+      email,
+      avatarPath,
+      type,
       commentsCount,
-      coordinates,
+      latitude,
+      longitude
     ].join('\t');
   }
 }

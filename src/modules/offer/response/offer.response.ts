@@ -1,35 +1,60 @@
-import {Expose, Type} from 'class-transformer';
+import { Expose, Type } from 'class-transformer';
 import UserResponse from '../../user/response/user.response.js';
+import { PropertyType } from '../../../types/property.enum.js';
+import { Facilities } from '../../../types/facilities.enum.js';
+import { CityType } from '../../../types/city.enum.js';
+import { Coordinates } from '../../../types/Coordinates.type.js';
 
-export default class OfferResponse {
+export default class OfferListResponse {
   @Expose()
-  public price!: string;
+  public id!: string;
 
   @Expose()
   public title!: string;
 
   @Expose()
-  public property!: string;
+  public description!: string;
 
   @Expose()
-  public postDate!: string;
+  public postDate!: Date;
 
   @Expose()
-  public city!: string;
+  public city!: CityType;
 
   @Expose()
   public preview!: string;
 
   @Expose()
-  public isPremium!: string;
+  public photos!: string[];
 
   @Expose()
-  public rating!: string;
+  public isPremium!: boolean;
 
   @Expose()
-  public commentsCount!: string;
+  public rating!: number;
+
+  @Expose()
+  public property!: PropertyType;
+
+  @Expose()
+  public rooms!: number;
+
+  @Expose()
+  public guests!: number;
+
+  @Expose()
+  public price!: number;
+
+  @Expose()
+  public facilities!: Facilities[];
 
   @Expose({ name: 'userId'})
   @Type(() => UserResponse)
   public user!: UserResponse;
+
+  @Expose()
+  public commentsCount!: number;
+
+  @Expose()
+  public coordinates!: Coordinates;
 }

@@ -1,8 +1,9 @@
-import {Facilities} from '../../../types/facilities.enum.js';
-import {PropertyType} from '../../../types/property.enum.js';
-import {CityType} from '../../../types/city.enum.js';
+import { Facilities } from '../../../types/facilities.enum.js';
+import { PropertyType } from '../../../types/property.enum.js';
+import { CityType } from '../../../types/city.enum.js';
 import { Type } from 'class-transformer';
-import {IsArray,
+import {
+  IsArray,
   IsBoolean,
   IsDateString,
   IsEnum,
@@ -36,7 +37,7 @@ export default class CreateOfferDto {
   @IsDateString({}, {message: 'postDate must be valid ISO date'})
   public postDate!: Date;
 
-  @IsEnum(CityType, {message: 'Type must be Paris Cologne, Brussels, Amsterdam, Hamburg or Dusseldorf'})
+  @IsEnum(CityType, {message: `City must be ${Object.values(CityType).join(', ')}.`})
   public city!: CityType;
 
   @IsString({message: 'Preview is required'})
@@ -49,7 +50,7 @@ export default class CreateOfferDto {
   @IsBoolean({message: 'IsPremium must be an boolean'})
   public isPremium!: boolean;
 
-  @IsEnum(PropertyType, {message: 'Type must be apartment, house, room or hotel'})
+  @IsEnum(PropertyType, {message: `Type must be ${Object.values(PropertyType).join(', ')}.`})
   public property!: PropertyType;
 
   @IsInt({message: 'Rooms must be an integer'})
