@@ -1,5 +1,5 @@
 import { UserType } from '../../../types/user-type.enum.js';
-import {IsEmail, IsString, Length, IsEnum} from 'class-validator';
+import { IsEmail, IsString, Length, IsEnum } from 'class-validator';
 
 export default class CreateUserDto {
   @IsString({message: 'Name is required'})
@@ -16,4 +16,5 @@ export default class CreateUserDto {
 
   @IsEnum(UserType, {message: `Type must be ${Object.values(UserType).join(', ')}.`})
   public type!: UserType;
+
 }

@@ -120,6 +120,19 @@ GET http://localhost:5000/offers/63dfa48f31a6617062cb298a/comments HTTP/1.1
 
 ## Проверка токена пользователя
 GET http://localhost:5000/users/login HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3QyQHRlc3QucnUiLCJpZCI6IjYzZGZhNDU4MzI5ODExMjA2YTZhMWU5NCIsImlhdCI6MTY3NjM5ODk2NSwiZXhwIjoxNjc2NTcxNzY1fQ.vxrp3uli1NdXO3XkOvdquzSIUaFbaRO2TShffDAYllo
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3QyQHRlc3QucnUiLCJpZCI6IjYzZGZhNDU4MzI5ODExMjA2YTZhMWU5NCIsImlhdCI6MTY3NjU3OTY3MCwiZXhwIjoxNjc2NzUyNDcwfQ.PAnxrOCeEZ0SEjsVcOHDWcefsX9hg3pJxeQu_g12zXA
+
+###
+
+## Загрузка изображения для аватара
+POST http://localhost:5000/users/63dfa458329811206a6a1e94/avatar HTTP/1.1
+Content-Type: multipart/form-data; boundary=----WebKitFormBoundary7MA4YWxkTrZu0gW
+
+------WebKitFormBoundary7MA4YWxkTrZu0gW
+Content-Disposition: form-data; name="avatar"; filename="items.jpg"
+Content-Type: image/png
+
+< ./markup/img/avatar-angelina.jpg
+------WebKitFormBoundary7MA4YWxkTrZu0gW--
 
 ###
