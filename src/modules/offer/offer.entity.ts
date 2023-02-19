@@ -10,16 +10,16 @@ export interface OfferEntity extends defaultClasses.Base {}
 
 @modelOptions({
   schemaOptions: {
-    collection: 'offers'
+    collection: 'offers',
   }
 })
 
 export class OfferEntity extends defaultClasses.TimeStamps {
 
-  @prop({required: true})
+  @prop({trim: true, required: true})
   public title!: string;
 
-  @prop({required: true})
+  @prop({trim: true, required: true})
   public description!: string;
 
   @prop({required: true})
@@ -28,19 +28,22 @@ export class OfferEntity extends defaultClasses.TimeStamps {
   @prop({required: true})
   public city!: string;
 
-  @prop({required: true})
+  @prop({default: ''})
   public preview!: string;
 
   @prop({required: true})
   public photos!: string[];
 
-  @prop({required: true})
+  @prop({default: false})
   public isPremium!: boolean;
 
-  @prop({required: true, default: 0})
+  @prop({ default: 0})
   public rating!: number;
 
-  @prop({required: true})
+  @prop({
+    type: () => String,
+    enum: PropertyType
+  })
   public property!: PropertyType;
 
   @prop({required: true})

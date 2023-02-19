@@ -42,7 +42,7 @@ Content-Type: application/json
 # Объявления
 ## Объявление по идентификатору
 
-GET http://localhost:5000/offers/63ebe8821f47145e6c920a16 HTTP/1.1
+GET http://localhost:5000/offers/63ebf0759350216a5b2b3c58 HTTP/1.1
 
 ###
 
@@ -101,12 +101,12 @@ Content-Type: application/json
 
 ## Создать комментарий
 POST http://localhost:5000/comments HTTP/1.1
-Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3QyQHRlc3QucnUiLCJpZCI6IjYzZGZhNDU4MzI5ODExMjA2YTZhMWU5NCIsImlhdCI6MTY3NjM5ODk2NSwiZXhwIjoxNjc2NTcxNzY1fQ.vxrp3uli1NdXO3XkOvdquzSIUaFbaRO2TShffDAYllo
+Authorization: Bearer eyJhbGciOiJIUzI1NiJ9.eyJlbWFpbCI6InRlc3QyQHRlc3QucnUiLCJpZCI6IjYzZGZhNDU4MzI5ODExMjA2YTZhMWU5NCIsImlhdCI6MTY3NjgwNDM2OCwiZXhwIjoxNjc2OTc3MTY4fQ.uonT_-RgYiIOwEv5uEy_tvAkFxrkdYfQ0501UTbp_Go
 Content-Type: application/json
 
 {
   "text": "ыкпыцкпfrsgdsfgdfiiiiii555555555555555fyjhgjfhj  ",
-  "offerId": "63dfa48f31a6617062cb298a",
+  "offerId": "63ebf0759350216a5b2b3c58",
   "rating": 4
 }
 
