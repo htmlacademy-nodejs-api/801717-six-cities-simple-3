@@ -66,6 +66,7 @@ class ImportCommand implements CliCommandInterface {
     await this.databaseService.connect(uri);
 
     const fileReader = new TSVFileReader(filename.trim());
+
     fileReader.on('line', this.onLine);
     fileReader.on('end', this.onComplete);
 

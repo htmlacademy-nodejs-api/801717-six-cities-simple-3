@@ -72,7 +72,48 @@ npm start
 npm run mock:server
 ```
 
-Запуск тестового сервера для проверки REST API
+#### CLI: Получить версию приложения
+```bash
+./dist/cli.js --version
+```
+Выведет номер версии в терминале
+
+#### CLI: Помощь
+```bash
+./dist/cli.js --help
+```
+Выведет в терминале список доступных комманд приложения 
+
+#### CLI: Генерация тестовых данных
+```bash
+./dist/cli.js --generate 10 ./mocks/mock-data.tsv http://localhost:3123/api
+```
+Сгенерирует тестовые данные (10 записей) и запишет их в файл (./mocks/mock-data.tsv)
+
+#### CLI: Импорт тестовых данных в базу данных
+```bash
+./dist/cli.js --import ./mocks/mock-data.tsv admin test 127.0.0.1 course-nodejs-restapi qwerty
+```
+Импортирует данные из файла (/mocks/mock-data.tsv ) в базу данных
+### Переменные окружения
+
+PORT=5000 - Порт для входящего соединения
+
+SALT=qwerty - соль для хешированяи пароля
+
+DB_HOST=127.0.0.1 - IP-адрес сервера базы данных (MongoDB)
+
+DB_USER=admin - Имя пользователя для подключения к базе данных (MongoDB)
+
+DB_PASSWORD=test - Пароль для подключения к базе данных (MongoDB)
+
+DB_NAME=course-nodejs-restapi - Название базы данных (MongoDB)
+
+DB_PORT=27017 - Порт для подключения к базе данных (MongoDB)
+
+UPLOAD_DIRECTORY=upload - Директория для загрузки файлов
+
+JWT_SECRET=secret - Секретный код для формирования токенов доступа (JSON Web Token)
 
 ## Структура проекта
 
